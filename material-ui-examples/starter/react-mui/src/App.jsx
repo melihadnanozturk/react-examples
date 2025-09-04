@@ -1,8 +1,22 @@
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import Form from "./Components/Form";
+
 function App() {
   return (
     <>
-      <h1>React Material UI</h1>
+      <Form></Form>
     </>
+  );
+}
+
+function ButtonAbi({ text }) {
+  return (
+    <Stack>
+      <Button>Merhaba</Button>
+      <Button>Merhaba</Button>
+      <Button>Merhaba</Button>
+    </Stack>
   );
 }
 
