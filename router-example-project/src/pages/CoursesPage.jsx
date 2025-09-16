@@ -7,6 +7,9 @@ export default function CoursesPage() {
     <>
       <h1>"Coruses Page"</h1>
       <div id="courses">
+        <Link to={"/kurslar/yeni"}>Yeni Kurs Ekle</Link>
+        <br />
+        <br />
         {courses.map((item) => (
           <div className="card">
             <img src={`http://localhost:5000/images/${item.image}`} alt="" />
@@ -19,7 +22,6 @@ export default function CoursesPage() {
             </div>
           </div>
         ))}
-        <Link to={"/kurslar/yeni"}>Yeni Kurs Ekle</Link>
       </div>
     </>
   );

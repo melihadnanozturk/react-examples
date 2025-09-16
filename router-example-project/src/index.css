@@ -81,7 +81,8 @@ form input, form textarea {
     padding: 10px;
     border: 4px;
     border: 0;
-    width: 300px;
+    max-width: 100%;
+    width: 500px;
     color: #000;
 }
 form button{
@@ -110,17 +111,6 @@ form button{
 }
 
 .card a {
-    border: 0;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 4px;
-    color: #fff;
-    background: var(--primary);
-    cursor: pointer;
-    text-decoration: none;
-}
-
-#courses a {
     border: 0;
     padding: 5px;
     margin: 5px;

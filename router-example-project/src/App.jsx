@@ -14,7 +14,7 @@ import Contact from "./pages/Contact";
 import HelpPage from "./pages/HelpPage";
 import "./index.css";
 import MainLayout from "./layouts/MainLayout";
-import CourseCreatePage from "./pages/CourseCreatePage";
+import CourseCreatePage, { courseAction } from "./pages/CourseCreatePage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
               { path: "edit", element: <CourseEditPage /> },
             ],
           },
-          { path: "yeni", element: <CourseCreatePage /> },
+          { path: "yeni", element: <CourseCreatePage />, action: courseAction },
         ],
       },
       {
