@@ -15,9 +15,11 @@ export default function CoursesPage() {
               <p>{item.description}</p>
               <br />
               <Link to={"/kurslar/" + item.id}>Detay</Link>
+              <Link to={item.id + "/edit"}>Edit</Link>
             </div>
           </div>
         ))}
+        <Link to={"/kurslar/yeni"}>Yeni Kurs Ekle</Link>
       </div>
     </>
   );

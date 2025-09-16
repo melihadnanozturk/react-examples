@@ -120,3 +120,31 @@ form button{
     text-decoration: none;
 }
 
+#courses a {
+    border: 0;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+    color: #fff;
+    background: var(--primary);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.course-desc {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-top: 20px 0;
+}
+
+.course-desc img {
+    border-radius: 10px;
+}
+
+.icons{
+    display: flex;
+    gap: 25px;
+    margin-top: 20px;
+}
+

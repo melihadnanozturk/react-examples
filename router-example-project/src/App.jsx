@@ -8,11 +8,13 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import CoursesDetail, { coursesDetailLoader } from "./pages/CoursesDetail";
 import CoursesPage, { coursesLodader } from "./pages/CoursesPage";
+import CourseEditPage from "./pages/CourseEditPage";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import HelpPage from "./pages/HelpPage";
 import "./index.css";
 import MainLayout from "./layouts/MainLayout";
+import CourseCreatePage from "./pages/CourseCreatePage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,11 +23,21 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "ev", element: <HomePage /> },
       { path: "hakkimda", element: <AboutPage /> },
-      { path: "kurslar", element: <CoursesPage />, loader: coursesLodader },
       {
-        path: "kurslar/:id",
-        element: <CoursesDetail />,
-        loader: coursesDetailLoader,
+        path: "kurslar",
+        children: [
+          { index: true, element: <CoursesPage />, loader: coursesLodader },
+          {
+            id: "kurs-detay",
+            path: ":courceId",
+            loader: coursesDetailLoader,
+            children: [
+              { index: true, element: <CoursesDetail /> },
+              { path: "edit", element: <CourseEditPage /> },
+            ],
+          },
+          { path: "yeni", element: <CourseCreatePage /> },
+        ],
       },
       {
         path: "yardim",

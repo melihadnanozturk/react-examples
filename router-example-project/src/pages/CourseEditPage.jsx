@@ -5,12 +5,11 @@ import {
   useRouteLoaderData,
 } from "react-router";
 
-export default function CoursesPage() {
+export default function CourseEditPage() {
   const course = useRouteLoaderData("kurs-detay");
-
   return (
     <>
-      <h1>{course.title}</h1>
+      <h1>Kurs Edit Page</h1>
       <div className="course-desc">
         <img src={`http://localhost:5000/images/${course.image}`} alt="" />
         <div>
@@ -33,7 +32,7 @@ export default function CoursesPage() {
 }
 
 export async function coursesDetailLoader({ params }) {
-  const { courceId } = params;
-  const res = await fetch("http://localhost:5000/courses/" + courceId);
+  const { id } = params;
+  const res = await fetch("http://localhost:5000/courses/" + id);
   return res.json();
 }
