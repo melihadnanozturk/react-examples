@@ -6,6 +6,7 @@ import {
 } from "react-router";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
+import CoursesDetail, { coursesDetailLoader } from "./pages/CoursesDetail";
 import CoursesPage, { coursesLodader } from "./pages/CoursesPage";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
@@ -14,13 +15,18 @@ import "./index.css";
 import MainLayout from "./layouts/MainLayout";
 const router = createBrowserRouter([
   {
-    path: "/adnan",
+    path: "/",
     element: <MainLayout />,
     children: [
       { index: true, element: <HomePage /> },
       { path: "ev", element: <HomePage /> },
       { path: "hakkimda", element: <AboutPage /> },
       { path: "kurslar", element: <CoursesPage />, loader: coursesLodader },
+      {
+        path: "kurslar/:id",
+        element: <CoursesDetail />,
+        loader: coursesDetailLoader,
+      },
       {
         path: "yardim",
         element: <HelpPage />,
