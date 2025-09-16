@@ -14,7 +14,9 @@ import Contact from "./pages/Contact";
 import HelpPage from "./pages/HelpPage";
 import "./index.css";
 import MainLayout from "./layouts/MainLayout";
-import CourseCreatePage, { courseAction } from "./pages/CourseCreatePage";
+import CourseCreatePage from "./pages/CourseCreatePage";
+import { courseFormAction } from "./actions/courseFormAction";
+import Test from "./pages/Test";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,10 +35,18 @@ const router = createBrowserRouter([
             loader: coursesDetailLoader,
             children: [
               { index: true, element: <CoursesDetail /> },
-              { path: "edit", element: <CourseEditPage /> },
+              {
+                path: "edit",
+                element: <CourseEditPage />,
+                action: courseFormAction,
+              },
             ],
           },
-          { path: "yeni", element: <CourseCreatePage />, action: courseAction },
+          {
+            path: "yeni",
+            element: <CourseCreatePage />,
+            action: courseFormAction,
+          },
         ],
       },
       {

@@ -1,9 +1,9 @@
 import { Form } from "react-router-dom";
 
-export default function CourseCreatePage({ data }) {
+export default function CourseCreatePage({ method, data }) {
   return (
     <>
-      <Form method="post">
+      <Form method={method}>
         <div>
           <label htmlFor="title">Title : </label>
           <input

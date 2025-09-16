@@ -1,10 +1,4 @@
-import {
-  Link,
-  useLoaderData,
-  useParams,
-  useRouteLoaderData,
-} from "react-router";
-import CourseCreatePage from "./CourseCreatePage";
+import { useRouteLoaderData } from "react-router";
 import CourseForm from "./CourseForm";
 
 export default function CourseEditPage() {
@@ -12,7 +6,7 @@ export default function CourseEditPage() {
   return (
     <>
       <h1>Kurs Edit Page</h1>
-      <CourseForm data={course} />
+      <CourseForm method="PUT" data={course} />
     </>
   );
 }
