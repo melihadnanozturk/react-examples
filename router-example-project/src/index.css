@@ -157,3 +157,9 @@ form button{
     text-align: center;
 }
 
+.errors {
+    list-style-type: none;
+    margin: 10px;
+    color: #ff4444;
+}
+

@@ -2,10 +2,18 @@ import { use } from "react";
 import { Form, useActionData } from "react-router-dom";
 
 export default function CourseCreatePage({ method, data }) {
-  const errors = useActionData();
+  const results = useActionData();
+  console.log("!!!! RESULTS", results);
   return (
     <>
       <Form method={method}>
+        {results && results.errors && (
+          <ul className="errors">
+            {Object.values(results.errors).map((err) => (
+              <li key={err}>{err}</li>
+            ))}
+          </ul>
+        )}
         <div>
           <label htmlFor="title">Title : </label>
           <input
@@ -14,7 +22,7 @@ export default function CourseCreatePage({ method, data }) {
             name="title"
             defaultValue={data ? data.title : ""}
           />
-          <p>{errors && errors.title && <span>{errors.title}</span>}</p>
+          <p>{results && results.title && <span>{results.title}</span>}</p>
         </div>
         <div>
           <label htmlFor="image">Image : </label>
@@ -24,7 +32,7 @@ export default function CourseCreatePage({ method, data }) {
             name="image"
             defaultValue={data ? data.image : ""}
           />
-          <p>{errors && errors.image && <span>{errors.image}</span>}</p>
+          <p>{results && results.image && <span>{results.image}</span>}</p>
         </div>
         <div>
           <label htmlFor="description">Description : </label>
@@ -34,7 +42,9 @@ export default function CourseCreatePage({ method, data }) {
             defaultValue={data ? data.description : ""}
           ></textarea>
           <p>
-            {errors && errors.description && <span>{errors.description}</span>}
+            {results && results.description && (
+              <span>{results.description}</span>
+            )}
           </p>
         </div>
         <button type="submit">Submit </button>
