@@ -18,6 +18,7 @@ import CourseCreatePage from "./pages/CourseCreatePage";
 import { courseFormAction } from "./actions/courseFormAction";
 import { deleteCourseAction } from "./actions/DeleteCourseAction";
 import Test from "./pages/Test";
+import NotFoundPages from "./pages/NotFoundPages";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -59,6 +60,7 @@ const router = createBrowserRouter([
           { path: "faq", element: <FAQ /> },
         ],
       },
+      { path: "*", element: <NotFoundPages /> },
     ],
   },
 ]);
