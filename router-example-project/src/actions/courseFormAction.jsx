@@ -1,4 +1,5 @@
 import { redirect } from "react-router";
+import { isRequiredCheck, isValidImage } from "../utils/validation";
 
 export async function courseFormAction({ request, params }) {
   const method = request.method;
@@ -16,6 +17,25 @@ export async function courseFormAction({ request, params }) {
     image: data.get("image"),
     description: data.get("description"),
   };
+
+  const errors = {};
+
+  if (!isRequiredCheck(data.get("title"))) {
+    errors.title = "Title is required";
+  }
+
+  if (!isValidImage(data.get("image"))) {
+    errors.image = "Valid image is required";
+  }
+
+  if (!isRequiredCheck(data.get("description"))) {
+    errors.description = "Description is required";
+  }
+
+  if (Object.keys(errors).length > 0) {
+    console.log(errors);
+    return errors;
+  }
 
   const response = await fetch(url, {
     method: method,

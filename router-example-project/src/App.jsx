@@ -16,6 +16,7 @@ import "./index.css";
 import MainLayout from "./layouts/MainLayout";
 import CourseCreatePage from "./pages/CourseCreatePage";
 import { courseFormAction } from "./actions/courseFormAction";
+import { deleteCourseAction } from "./actions/DeleteCourseAction";
 import Test from "./pages/Test";
 const router = createBrowserRouter([
   {
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
                 action: courseFormAction,
               },
             ],
+            action: deleteCourseAction,
           },
           {
             path: "yeni",

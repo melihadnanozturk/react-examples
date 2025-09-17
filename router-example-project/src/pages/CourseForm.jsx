@@ -1,6 +1,8 @@
-import { Form } from "react-router-dom";
+import { use } from "react";
+import { Form, useActionData } from "react-router-dom";
 
 export default function CourseCreatePage({ method, data }) {
+  const errors = useActionData();
   return (
     <>
       <Form method={method}>
@@ -10,9 +12,9 @@ export default function CourseCreatePage({ method, data }) {
             type="text"
             id="title"
             name="title"
-            required
             defaultValue={data ? data.title : ""}
           />
+          <p>{errors && errors.title && <span>{errors.title}</span>}</p>
         </div>
         <div>
           <label htmlFor="image">Image : </label>
@@ -20,18 +22,20 @@ export default function CourseCreatePage({ method, data }) {
             type="text"
             id="image"
             name="image"
-            required
             defaultValue={data ? data.image : ""}
           />
+          <p>{errors && errors.image && <span>{errors.image}</span>}</p>
         </div>
         <div>
           <label htmlFor="description">Description : </label>
           <textarea
             name="description"
             rows={5}
-            required
             defaultValue={data ? data.description : ""}
           ></textarea>
+          <p>
+            {errors && errors.description && <span>{errors.description}</span>}
+          </p>
         </div>
         <button type="submit">Submit </button>
       </Form>
