@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { NavLink } from "react-router-dom";
+import { currencyTRY } from "../utils/price_format";
 
 export default function ProductCard({ product }) {
   return (
@@ -26,7 +27,7 @@ export default function ProductCard({ product }) {
               {product.title}
             </Typography>
             <Typography variant="body1" color="secondary.dark">
-              {product.price} ₺
+              {currencyTRY.format(product.price)}
             </Typography>
           </CardContent>
         </CardActionArea>

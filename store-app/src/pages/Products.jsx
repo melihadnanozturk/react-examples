@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductList from "../components/ProductList";
+import Loading from "../components/Loading";
 
 export default function ProductPage() {
   const [products, setProducts] = useState([]);
@@ -23,7 +24,7 @@ export default function ProductPage() {
     fetchProducts();
   }, []);
 
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <Loading />;
 
   return (
     <div className="container">
