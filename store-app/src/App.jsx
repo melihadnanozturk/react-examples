@@ -1,11 +1,11 @@
-import createBrowserRouter from "react-router-dom";
+import { createBrowserRouter, Route, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/Home";
-import ProductsPage from "./pages/Home";
-import ProductDetailPage from "./pages/Home";
-import CartPage from "./pages/Home";
-import LoginPage from "./pages/Home";
-import RegisterPage from "./pages/Home";
-import MainLayout from "./layouts/MainLayout";
+import ProductsPage from "./pages/Products";
+import ProductDetailPage from "./pages/ProductsDetails";
+import CartPage from "./pages/Cart";
+import LoginPage from "./pages/Login";
+import RegisterPage from "./pages/Register";
+import MainLayout from "./layouts/Main";
 
 const router = createBrowserRouter([
   {
@@ -28,11 +28,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return (
-    <>
-      <h1>Store App</h1>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
