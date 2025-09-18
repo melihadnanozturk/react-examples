@@ -1,15 +1,16 @@
 import { Grid } from "@mui/material";
+import ProductCard from "./ProductCard";
 
 export default function ProductList({ param }) {
   return (
     <Grid container spacing={2}>
-      {param.map((product) => (
+      {param.map((p) => (
         <Grid
-          backgroundColor="primary.light"
+          bacgroundColor="primary.ligt"
+          key={p.id}
           size={{ xs: 6, md: 4, lg: 3 }}
-          key={product.id}
         >
-          {product.title}
+          <ProductCard product={p} />
         </Grid>
       ))}
     </Grid>
