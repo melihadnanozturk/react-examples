@@ -6,6 +6,8 @@ import CartPage from "./pages/Cart";
 import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/Register";
 import MainLayout from "./layouts/Main";
+import { useEffect } from "react";
+import request from "./api/apiClient";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  useEffect(() => {
+    request.cart
+      .get()
+      .then((cart) => console.log("CART : ", cart))
+      .catch((error) => console.log(error));
+  }, []);
   return <RouterProvider router={router} />;
 }
 

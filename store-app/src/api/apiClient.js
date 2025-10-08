@@ -3,15 +3,13 @@ import { data } from "react-router";
 import { toast } from "react-toastify";
 
 axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.withCredentials = true;
 
 axios.interceptors.response.use(
   (response) => {
-    console.log("success");
     return response;
   },
   (error) => {
-    console.log("HATAAAAAA VAR HACIIII");
-
     const { data, status } = error.response;
 
     switch (status) {
@@ -36,8 +34,17 @@ const products = {
   details: (id) => methods.get(`products/${id}`),
 };
 
+const cart = {
+  get: () => methods.get("carts"),
+  addItem: (productId, quantity = 1) =>
+    methods.post(`carts?productId=${productId}&quantity=${quantity}`),
+  deleteItem: (productId, quantity = 1) =>
+    methods.delete(`carts?productId=${productId}&quantity=${quantity}`),
+};
+
 const request = {
   products,
+  cart,
 };
 
 export default request;

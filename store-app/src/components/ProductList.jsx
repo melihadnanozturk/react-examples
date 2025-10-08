@@ -5,11 +5,7 @@ export default function ProductList({ param }) {
   return (
     <Grid container spacing={2}>
       {param.map((p) => (
-        <Grid
-          bacgroundColor="primary.ligt"
-          key={p.id}
-          size={{ xs: 6, md: 4, lg: 3 }}
-        >
+        <Grid key={p.id} size={{ xs: 6, md: 4, lg: 3 }}>
           <ProductCard product={p} />
         </Grid>
       ))}

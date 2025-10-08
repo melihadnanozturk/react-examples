@@ -12,10 +12,22 @@ import {
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { NavLink } from "react-router-dom";
 import { currencyTRY } from "../utils/price_format";
+import request from "../api/apiClient";
+import { useState } from "react";
 
 export default function ProductCard({ product }) {
+  const [loading, setLoading] = useState(false);
+  function handleAddItem(productId) {
+    setLoading(true);
+    request.cart
+      .addItem(productId)
+      .then((cart) => console.log("POST_CARD", cart))
+      .catch((error) => console.log("POST_CARD_ERROR : ", error))
+      .finally(() => setLoading(false));
+  }
+
   return (
-    <p>
+    <>
       <Card>
         <CardActionArea component={NavLink} to={"/products/" + product.id}>
           <CardMedia
@@ -35,9 +47,11 @@ export default function ProductCard({ product }) {
           <IconButton color="primary" size="large">
             <FavoriteBorderIcon />
           </IconButton>
-          <Button>Sepete Ekle</Button>
+          <Button loading={loading} onClick={() => handleAddItem(product.id)}>
+            Sepete Ekle
+          </Button>
         </CardActions>
       </Card>
-    </p>
+    </>
   );
 }

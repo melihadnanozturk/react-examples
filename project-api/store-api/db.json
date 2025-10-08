@@ -45,9 +45,15 @@
   ],
   "carts": [
     {
-      "id": "da81ea9d-83bc-4e0d-8653-a06bc29e9ee1",
-      "customerId": "e30ac1c0-32f5-4e29-b811-7a9af68c2a84",
-      "cartItems": []
+      "id": "b65b9819-fcc5-496b-a5ee-2a7feb9674b4",
+      "customerId": "b46c4c33-41a8-4b22-af02-2c6c26c5b619",
+      "cartItems": [
+        {
+          "id": "ad85c681-f56a-465d-8e47-270013a99c2e",
+          "productId": "1",
+          "quantity": 1
+        }
+      ]
     }
   ],
   "users": [
