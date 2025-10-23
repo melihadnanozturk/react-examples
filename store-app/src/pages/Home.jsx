@@ -1,7 +1,9 @@
+import Counter from "./counter/Counter";
+
 export default function HomePage() {
   return (
     <div className="container">
-      <h1>Home Page</h1>
+      <Counter />
     </div>
   );
 }
