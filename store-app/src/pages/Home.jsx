@@ -1,9 +1,9 @@
-import Counter from "./counter/Counter";
+import Message from "./message/Message";
 
 export default function HomePage() {
   return (
     <div className="container">
-      <Counter />
+      <Message />
     </div>
   );
 }
