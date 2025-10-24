@@ -1,9 +1,7 @@
-import Message from "./message/Message";
-
 export default function HomePage() {
   return (
     <div className="container">
-      <Message />
+      <h1>Home Page</h1>
     </div>
   );
 }

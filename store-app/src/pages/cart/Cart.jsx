@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import request from "../api/apiClient";
-import { currencyTRY } from "../utils/price_format";
+import request from "../../api/apiClient";
+import { currencyTRY } from "../../utils/price_format";
 import { Delete } from "@mui/icons-material";
-import Loading from "../components/Loading";
+import Loading from "../../components/Loading";
+import { useDispatch } from "react-redux";
 
 import {
   IconButton,
@@ -13,10 +14,14 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import { useSelector } from "react-redux";
 
 export default function CartPage() {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { myCart } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     request.cart.get().then((data) => {
       setCart(data);
