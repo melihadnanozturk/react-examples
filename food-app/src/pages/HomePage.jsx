@@ -1,24 +1,29 @@
 import Container from "@mui/material/Container";
 import FoodCart from "../components/FoodCart";
 import Grid from "@mui/material/Grid";
-import { useEffect, useState } from "react";
-import request from "../api/apiClient";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllFoods } from "./slices/FoodSlice";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function HomePage() {
-  //food apiden gelecek, liste ile food cartlarını göstereceğiz const food;
-  useEffect(() => {
-    request.foods.list().then((data) => setF(data));
-  }, []);
+  const dispatch = useDispatch();
+  const { foods = [], loading } = useSelector((state) => state.food);
 
-  const [f, setF] = useState([]);
+  useEffect(() => {
+    dispatch(fetchAllFoods());
+  }, [dispatch]);
+
+  if (loading)
+    return <CircularProgress sx={{ display: "block", margin: "2rem auto" }} />;
 
   return (
     <Container>
-      <h1>Home Page</h1>
+      <h1>Food List</h1>
       <Grid container spacing={2}>
-        {f.map((f) => (
-          <Grid item xs={12} sm={6} md={4} key={f.id}>
-            <FoodCart food={f} />
+        {foods.map((food) => (
+          <Grid item xs={12} sm={6} md={4} key={food.id}>
+            <FoodCart food={food} />
           </Grid>
         ))}
       </Grid>

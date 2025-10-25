@@ -16,14 +16,14 @@ public class FoodEntity {
 
     private String desc;
 
-    private String images;
+    private String image;
 
-    public String getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
 
-    public void setImages(String images) {
-        this.images = images;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Long getId() {
