@@ -1,11 +1,9 @@
 package org.maoco.reduxcrudapi;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "food")
 public class FoodEntity {
 
     @Id
@@ -14,10 +12,19 @@ public class FoodEntity {
 
     private String name;
 
-        private Integer people;
+    private Integer people;
 
     private String desc;
 
+    private String images;
+
+    public String getImages() {
+        return images;
+    }
+
+    public void setImages(String images) {
+        this.images = images;
+    }
 
     public Long getId() {
         return id;
