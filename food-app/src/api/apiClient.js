@@ -5,7 +5,7 @@ axios.defaults.withCredentials = true;
 
 const methods = {
   get: (url) => axios.get(url).then((response) => response.data),
-  post: (url) => axios.post(url, body).then((response) => response.data),
+  post: (url, body) => axios.post(url, body).then((response) => response.data),
   delete: (url) => axios.delete(url).then((response) => response.data),
 };
 
@@ -13,7 +13,7 @@ const foods = {
   list: () => methods.get("food"),
   details: (id) => methods.get(`food/${id}`),
   delete: (id) => methods.delete(`food/${id}`),
-  // create eksik
+  create: (body) => methods.post(`food`, body),
 };
 
 const request = {

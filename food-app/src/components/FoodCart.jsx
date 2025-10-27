@@ -4,25 +4,28 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
+import { useNavigate } from "react-router-dom";
 
 export default function FoodCart({ food }) {
   // Redux işle food bilgilerini getir
 
+  const navigate = useNavigate();
+
   return (
     <Card sx={{ maxWidth: 345, mt: 2 }}>
-      <CardActionArea>
+      <CardActionArea onClick={() => navigate(`/food/${food.id}`)}>
         <CardMedia
           component="img"
           height="200"
-          image="https://img.freepik.com/free-vector/hand-drawn-food-background_23-2148051451.jpg"
+          sx={{
+            objectFit: "cover",
+          }}
+          image={food.image}
           alt="green iguana"
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+        <CardContent sx={{ width: "200px" }}>
+          <Typography gutterBottom noWrap variant="h6" component="div">
             {food.name}
-          </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {food.desc}
           </Typography>
         </CardContent>
       </CardActionArea>

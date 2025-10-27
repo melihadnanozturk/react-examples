@@ -12,6 +12,7 @@ export const fetchFoodDetails = createAsyncThunk(
   "food/fetchDetail",
   async (id) => {
     const response = await axios.get(`${API_URL}/food/${id}`);
+    console.log("response", response.data);
     return response.data;
   }
 );

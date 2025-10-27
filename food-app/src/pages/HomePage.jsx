@@ -11,7 +11,7 @@ export default function HomePage() {
   const { foods = [], loading } = useSelector((state) => state.food);
 
   useEffect(() => {
-    dispatch(fetchAllFoods());
+    if (foods.length === 0) dispatch(fetchAllFoods());
   }, [dispatch]);
 
   if (loading)
