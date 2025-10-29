@@ -1,14 +1,15 @@
 import Container from "@mui/material/Container";
 import FoodCart from "../components/FoodCart";
 import Grid from "@mui/material/Grid";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllFoods } from "./slices/FoodSlice";
 import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
 
 export default function HomePage() {
   const dispatch = useDispatch();
-  const { foods = [], loading } = useSelector((state) => state.food);
+  const { foods = [], loading, error } = useSelector((state) => state.food);
 
   useEffect(() => {
     if (foods.length === 0) dispatch(fetchAllFoods());
@@ -16,6 +17,10 @@ export default function HomePage() {
 
   if (loading)
     return <CircularProgress sx={{ display: "block", margin: "2rem auto" }} />;
+  // if (error) {
+  //   alert("Hata: " + error);
+  //   return <p style={{ color: "red" }}>Hata: {error}</p>;
+  // }
 
   return (
     <Container>

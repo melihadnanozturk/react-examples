@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./src/pages/HomePage";
-import FoodAdminPage from "./src/pages/FoodAdminPage";
+import FoodAdminPage from "./src/pages/EditPage.jsx";
 import Layout from "./src/components/Layout.jsx";
 import FoodDetailPage from "./src/pages/FoodDetailPage.jsx";
 

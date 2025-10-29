@@ -41,7 +41,7 @@ export const foodSlice = createSlice({
       })
       .addCase(fetchAllFoods.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = "Beklenmeyen bir hata oluştu: " + action.error.message;
       })
       .addCase(fetchFoodDetails.fulfilled, (state, action) => {
         state.foodDetails[action.payload.id] = action.payload;
