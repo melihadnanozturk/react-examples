@@ -3,6 +3,13 @@ import axios from "axios";
 axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.withCredentials = true;
 
+axios.interceptors.request.use((request) => {
+  const dummyToken = "denemeToken";
+  request.headers.Authorization = `Bearer ${dummyToken}`;
+
+  return request;
+});
+
 const methods = {
   get: (url) => axios.get(url).then((response) => response.data),
   post: (url, body) => axios.post(url, body).then((response) => response.data),
