@@ -17,10 +17,6 @@ export default function HomePage() {
 
   if (loading)
     return <CircularProgress sx={{ display: "block", margin: "2rem auto" }} />;
-  // if (error) {
-  //   alert("Hata: " + error);
-  //   return <p style={{ color: "red" }}>Hata: {error}</p>;
-  // }
 
   return (
     <Container>
