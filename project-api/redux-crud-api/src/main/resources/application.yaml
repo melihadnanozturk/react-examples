@@ -16,8 +16,9 @@ spring:
     console:
       enabled: true
 
-security:
-    jwt:
-      secret-key: 5c923b19b1c3300db32e770084728b1dd004720ce99949f5b7be12e4634f40e7
+app:
+  jwt:
+    secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+    expiration-ms: 1800000 # 30 dakika (millisaniye)
 
 

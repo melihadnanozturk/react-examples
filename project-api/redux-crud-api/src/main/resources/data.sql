@@ -19,6 +19,3 @@ VALUES ('İspanakli Nohutlu Bulgurlu Köfte', 2, 'Ben pek sevmedim ama yapilsa y
 INSERT INTO FOOD (NAME, PEOPLE, DESC, IMAGE)
 VALUES ('Nohut Tava', 3, 'Nohut yemeğinde farklı bir aura. Bilemedim. Guzel gozukuyor. Deneyip gorelim .)',
         'https://i.nefisyemektarifleri.com/2025/10/16/nohut-tava.jpg');
-
-INSERT INTO CUSTOM_USER (username,password,role) VALUES ('adminUser','a123','ADMIN');
-INSERT INTO CUSTOM_USER (username,password,role) VALUES ('testUser','t123','TEST');
