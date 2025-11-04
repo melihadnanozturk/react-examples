@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-@RestController  
+@RestController
 @RequestMapping("/food")
 public class FoodController {
 
@@ -20,12 +20,12 @@ public class FoodController {
         return ResponseEntity.ok(foodService.getFood(id));
     }
 
-    @PostMapping
+    @PostMapping("/admin")
     public ResponseEntity<FoodEntity> createNewFood(@RequestBody FoodEntity food) {
         return ResponseEntity.ok(foodService.createNewFood(food));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/{id}")
     public ResponseEntity<String> deleteFoodById(@PathVariable Long id) {
         return ResponseEntity.ok(foodService.deleteById(id));
     }

@@ -16,4 +16,8 @@ spring:
     console:
       enabled: true
 
+security:
+    jwt:
+      secret-key: 5c923b19b1c3300db32e770084728b1dd004720ce99949f5b7be12e4634f40e7
+
 
