@@ -23,8 +23,14 @@ const foods = {
   create: (body) => methods.post(`food`, body),
 };
 
+const auth = {
+  login: (body) => methods.post("api/auth/login", body),
+  signIn: (body) => methods.post("api/auth/sign", body),
+};
+
 const request = {
   foods,
+  auth,
 };
 
 export default request;

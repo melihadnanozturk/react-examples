@@ -52,6 +52,19 @@ export default function Navbar() {
               >
                 Panel
               </Typography>
+              <Typography
+                variant="h5"
+                component={NavLink}
+                to="/auth/login"
+                color="inherit"
+                sx={{
+                  flexGrow: 1,
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+              >
+                Login
+              </Typography>
             </Box>
           </Toolbar>
         </AppBar>
