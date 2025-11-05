@@ -1,37 +1,36 @@
 package org.maoco.reduxcrudapi.security;
 
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
+import org.maoco.reduxcrudapi.exception.UserAlreadyException;
+import org.maoco.reduxcrudapi.user.UserEntity;
+import org.maoco.reduxcrudapi.user.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final Map<String, UserDetails> users = new HashMap<>();
+    private final UserRepository userRepository;
 
     // Uygulama başladığında örnek kullanıcıları hafızaya ekleyelim
-    public UserDetailsServiceImpl() {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        users.put("user", new User("user", encoder.encode("password123"),
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))));
-        users.put("admin", new User("admin", encoder.encode("password123"),
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN"))));
+    public UserDetailsServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        if (users.containsKey(username)) {
-            return users.get(username);
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+    }
+
+    public UserDetails saveNewUser(UserEntity userEntity) {
+        if (userRepository.findByUsername(userEntity.getUsername()).isEmpty()){
+            return userRepository.save(userEntity);
         }
-        throw new UsernameNotFoundException("User not found with username: " + username);
+
+        throw new UserAlreadyException();
     }
 }

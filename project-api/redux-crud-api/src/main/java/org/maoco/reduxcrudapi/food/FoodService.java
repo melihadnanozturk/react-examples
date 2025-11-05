@@ -1,9 +1,8 @@
-package org.maoco.reduxcrudapi;
+package org.maoco.reduxcrudapi.food;
 
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 
 @Service
 public class FoodService {

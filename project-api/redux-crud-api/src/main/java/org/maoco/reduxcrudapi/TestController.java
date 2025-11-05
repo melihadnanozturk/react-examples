@@ -1,4 +1,4 @@
-package org.maoco.reduxcrudapi.security;
+package org.maoco.reduxcrudapi;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;

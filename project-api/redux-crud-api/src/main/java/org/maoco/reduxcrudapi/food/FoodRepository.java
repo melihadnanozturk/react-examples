@@ -1,4 +1,4 @@
-package org.maoco.reduxcrudapi;
+package org.maoco.reduxcrudapi.food;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
