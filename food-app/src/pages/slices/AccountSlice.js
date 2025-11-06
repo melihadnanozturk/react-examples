@@ -8,6 +8,11 @@ export const login = createAsyncThunk("auth/login", async (body) => {
   return response;
 });
 
+export const signIn = createAsyncThunk("auth", async (body) => {
+  const response = await request.auth.signIn(body);
+  return response;
+});
+
 const initialState = {
   user: null,
   token: null,
@@ -45,7 +50,23 @@ export const accountSlice = createSlice({
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
-        state.error = "Beklenmeyen bir hata oluştu: " + action.error.message;
+        state.error = action.error.message;
+      })
+      .addCase(signIn.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(signIn.fulfilled, (state, action) => {
+        const { token, username, roles } = action.payload;
+        state.loading = false;
+        state.token = token;
+        state.user = { username, roles };
+        console.log("token", state.token);
+        console.log("user", state.user);
+      })
+      .addCase(signIn.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });

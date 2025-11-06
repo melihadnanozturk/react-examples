@@ -1,5 +1,5 @@
-import { Typography } from "@mui/material";
+import RegistrationForm from "../components/RegistrationForm";
 
 export default function SignInPage() {
-  return <Typography>SignInPage...</Typography>;
+  return <RegistrationForm />;
 }

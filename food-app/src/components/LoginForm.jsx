@@ -55,7 +55,7 @@ export default function LoginForm() {
           align="center"
           sx={{ fontWeight: "bold", mb: 3 }}
         >
-          Login Form
+          Giriş Yap
         </Typography>
         <TextField
           fullWidth
@@ -83,7 +83,11 @@ export default function LoginForm() {
           helperText={errors.password?.message}
         />
 
-        <Grid container spacing={2} size={12}>
+        <Button onClick={() => navigate("/auth")} variant="text">
+          Hesabınız yok mu ?{" "}
+        </Button>
+
+        {/* <Grid container spacing={2} size={12}>
           <Grid item>
             <FormControlLabel
               control={<Checkbox defaultChecked />}
@@ -96,7 +100,7 @@ export default function LoginForm() {
               label="Tester"
             />
           </Grid>
-        </Grid>
+        </Grid> */}
       </Stack>
 
       {error && (
