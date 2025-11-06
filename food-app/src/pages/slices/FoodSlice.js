@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import request from "../../api/apiClient";
 
 export const fetchAllFoods = createAsyncThunk("food/fetchAll", async () => {
+  console.log("FETCH FOODDSS");
   const response = await request.foods.list();
   return response.data;
 });

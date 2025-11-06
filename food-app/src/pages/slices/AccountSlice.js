@@ -1,34 +1,47 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import request from "../../api/apiClient";
+import { stepButtonClasses } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const login = createAsyncThunk("auth/login", async (body) => {
   const response = await request.auth.login(body);
-  return response.data;
+  return response;
 });
 
 const initialState = {
   user: null,
   token: null,
+  loading: false,
+  error: null,
 };
 
 export const accountSlice = createSlice({
   name: "account",
-  initialState: {
-    name: null,
-    token: null,
-    loading: false,
-    error: null,
+  initialState,
+  reducers: {
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
+    logout: (state) => {
+      state.user = null;
+      state.token = null;
+      state.loading = null;
+      state.error = null;
+    },
   },
-  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(login.fulfilled, (state, action) => {
+        const { token, username, roles } = action.payload;
         state.loading = false;
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.token = token;
+        state.user = { username, roles };
+        console.log("token", state.token);
+        console.log("user", state.user);
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
@@ -36,5 +49,7 @@ export const accountSlice = createSlice({
       });
   },
 });
+
+export const { setUser, logout } = accountSlice.actions;
 
 export default accountSlice.reducer;

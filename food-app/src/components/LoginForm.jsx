@@ -16,10 +16,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../pages/slices/AccountSlice";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { useNavigate } from "react-router-dom";
+import { use } from "react";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.account);
+  const navigate = useNavigate();
+
+  const { user, token, loading, error } = useSelector((state) => state.account);
 
   const {
     handleSubmit,
@@ -31,7 +35,10 @@ export default function LoginForm() {
 
   const handleClichButton = async (data) => {
     try {
-      dispatch(login({ username: data.username, password: data.password }));
+      await dispatch(
+        login({ username: data.username, password: data.password })
+      ).unwrap();
+      navigate("/");
     } catch {
       console.log(data);
     }

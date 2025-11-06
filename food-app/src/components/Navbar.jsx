@@ -7,8 +7,13 @@ import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
 import SoupKitchenIcon from "@mui/icons-material/SoupKitchen";
 import IconButton from "@mui/material/IconButton";
+import { useSelector } from "react-redux";
+import { Avatar } from "@mui/material";
+import { deepPurple } from "@mui/material/colors";
 
 export default function Navbar() {
+  const { user, token, loading, error } = useSelector((state) => state.account);
+
   return (
     <Toolbar>
       <Box sx={{ flexGrow: 1 }}>
@@ -52,19 +57,27 @@ export default function Navbar() {
               >
                 Panel
               </Typography>
-              <Typography
-                variant="h5"
-                component={NavLink}
-                to="/auth/login"
-                color="inherit"
-                sx={{
-                  flexGrow: 1,
-                  textDecoration: "none",
-                  color: "inherit",
-                }}
-              >
-                Login
-              </Typography>
+              {user ? (
+                <Avatar
+                  sx={{ width: 50, height: 50, bgcolor: deepPurple[500] }}
+                >
+                  {user.username[0]}
+                </Avatar>
+              ) : (
+                <Typography
+                  variant="h5"
+                  component={NavLink}
+                  to="/auth/login"
+                  color="inherit"
+                  sx={{
+                    flexGrow: 1,
+                    textDecoration: "none",
+                    color: "inherit",
+                  }}
+                >
+                  Login
+                </Typography>
+              )}
             </Box>
           </Toolbar>
         </AppBar>
