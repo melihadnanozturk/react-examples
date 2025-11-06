@@ -15,5 +15,5 @@ import java.util.List;
 public class AuthRequest {
     private String username;
     private String password;
-    private List<Role> role;
+    private List<Role> roles;
 }
