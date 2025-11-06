@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.maoco.reduxcrudapi.user.Role;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -13,5 +15,5 @@ import org.maoco.reduxcrudapi.user.Role;
 public class AuthRequest {
     private String username;
     private String password;
-    private Role role;
+    private List<Role> role;
 }

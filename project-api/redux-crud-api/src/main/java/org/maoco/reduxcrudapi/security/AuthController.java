@@ -40,7 +40,7 @@ public class AuthController {
         UserEntity userEntity = UserEntity.builder()
                 .username(signRequest.getUsername())
                 .password(passwordEncoder.encode(signRequest.getPassword()))
-                .roles(List.of(signRequest.getRole()))
+                .roles(signRequest.getRole())
                 .build();
 
         UserDetails userDetails = userDetailsService.saveNewUser(userEntity);
