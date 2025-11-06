@@ -4,14 +4,16 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import SoupKitchenIcon from "@mui/icons-material/SoupKitchen";
 import IconButton from "@mui/material/IconButton";
 import { useSelector } from "react-redux";
-import { Avatar } from "@mui/material";
+import { Avatar, ButtonGroup } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
+import LoginButtonGroup from "./LoginButtonGroup";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const { user, token, loading, error } = useSelector((state) => state.account);
 
   return (
@@ -64,19 +66,7 @@ export default function Navbar() {
                   {user.username[0]}
                 </Avatar>
               ) : (
-                <Typography
-                  variant="h5"
-                  component={NavLink}
-                  to="/auth/login"
-                  color="inherit"
-                  sx={{
-                    flexGrow: 1,
-                    textDecoration: "none",
-                    color: "inherit",
-                  }}
-                >
-                  Login
-                </Typography>
+                <LoginButtonGroup />
               )}
             </Box>
           </Toolbar>
