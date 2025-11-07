@@ -33,23 +33,22 @@ public class AuthController {
     public ResponseEntity<AuthResponse> authenticateUser(@RequestBody AuthRequest loginRequest) {
         AuthResponse response = this.login(loginRequest.getUsername(), loginRequest.getPassword());
 
-        ResponseCookie responseCookie = this.createResponseCookie(response.getToken());
 
         return ResponseEntity
-                .ok().header(HttpHeaders.SET_COOKIE, responseCookie.toString())
+                .ok()
                 .body(response);
     }
 
     @PostMapping("/sign")
     public ResponseEntity<?> signIn(@RequestBody AuthRequest signRequest) {
-        signRequest.setPassword(passwordEncoder.encode(signRequest.getPassword()));
+        String password = signRequest.getPassword();
+        signRequest.setPassword(passwordEncoder.encode(password));
         UserDetails userDetails = userDetailsService.saveNewUser(signRequest);
-        AuthResponse response = login(userDetails.getUsername(), signRequest.getPassword());
+        AuthResponse response = login(userDetails.getUsername(), password);
 
-        ResponseCookie responseCookie = this.createResponseCookie(response.getToken());
 
         return ResponseEntity
-                .ok().header(HttpHeaders.SET_COOKIE, responseCookie.toString())
+                .ok()
                 .body(response);
     }
 

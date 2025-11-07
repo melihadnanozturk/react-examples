@@ -3,6 +3,7 @@ package org.maoco.reduxcrudapi.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -50,7 +51,8 @@ public class SecurityConfiguration {
         })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/auth/**").permitAll() // Giriş endpoint'i herkese açık
+                        auth.requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+                        .requestMatchers("/api/auth/**").permitAll() // Giriş endpoint'i herkese açık
                                 .requestMatchers("/h2-console/**").permitAll()
                                 .requestMatchers("/api/test/user").hasRole("USER") // Sadece USER rolü erişebilir
                                 .requestMatchers("/api/test/admin").hasRole("ADMIN") // Sadece ADMIN rolü erişebilir
