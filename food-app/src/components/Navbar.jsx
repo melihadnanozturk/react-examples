@@ -41,20 +41,26 @@ export default function Navbar() {
                 Maoco Food
               </Typography>
             </Box>
+
             <Box sx={{ display: "flex", alignItems: "center", gap: 5 }}>
-              <Typography
-                variant="h5"
-                component={NavLink}
-                to="/admin"
-                color="inherit"
-                sx={{
-                  flexGrow: 1,
-                  textDecoration: "none",
-                  color: "inherit",
-                }}
-              >
-                Panel
-              </Typography>
+              {user?.roles?.includes("ROLE_ADMIN") ? (
+                <Typography
+                  variant="h5"
+                  component={NavLink}
+                  to="/admin"
+                  color="inherit"
+                  sx={{
+                    flexGrow: 1,
+                    textDecoration: "none",
+                    color: "inherit",
+                  }}
+                >
+                  Panel
+                </Typography>
+              ) : (
+                <></>
+              )}
+
               {user ? <IconMenu user={user} /> : <LoginButtonGroup />}
             </Box>
           </Toolbar>

@@ -32,8 +32,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    dispatch(setUser(user));
+    const userString = localStorage.getItem("user");
+    dispatch(setUser(JSON.parse(userString)));
   }, [dispatch]);
   return <RouterProvider router={router} />;
 }
