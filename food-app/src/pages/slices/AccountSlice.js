@@ -46,6 +46,7 @@ export const accountSlice = createSlice({
         state.loading = false;
         state.token = token;
         state.user = { username, roles };
+        localStorage.setItem("user", username);
         localStorage.setItem("token", token);
       })
       .addCase(login.rejected, (state, action) => {
@@ -61,8 +62,7 @@ export const accountSlice = createSlice({
         state.loading = false;
         state.token = token;
         state.user = { username, roles };
-        console.log("token", state.token);
-        console.log("user", state.user);
+        localStorage.setItem("user", username);
         localStorage.setItem("token", token);
       })
       .addCase(signIn.rejected, (state, action) => {

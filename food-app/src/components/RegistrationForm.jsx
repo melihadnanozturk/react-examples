@@ -22,7 +22,7 @@ function RegistrationForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { user, token, loading, error } = useSelector((state) => state.account);
+  const { loading, error } = useSelector((state) => state.account);
 
   const {
     handleSubmit,
