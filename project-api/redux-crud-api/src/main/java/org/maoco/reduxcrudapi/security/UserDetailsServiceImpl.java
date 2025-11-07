@@ -8,12 +8,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
+
 
     // Uygulama başladığında örnek kullanıcıları hafızaya ekleyelim
     public UserDetailsServiceImpl(UserRepository userRepository) {
@@ -26,8 +25,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }
 
-    public UserDetails saveNewUser(UserEntity userEntity) {
-        if (userRepository.findByUsername(userEntity.getUsername()).isEmpty()){
+    public UserDetails saveNewUser(AuthRequest signRequest) {
+        UserEntity userEntity = UserEntity.builder()
+                .username(signRequest.getUsername())
+                .password(signRequest.getPassword())
+                .roles(signRequest.getRoles())
+                .build();
+
+
+        if (userRepository.findByUsername(userEntity.getUsername()).isEmpty()) {
             return userRepository.save(userEntity);
         }
 
