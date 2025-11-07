@@ -2,9 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import request from "../../api/apiClient";
 
 export const fetchAllFoods = createAsyncThunk("food/fetchAll", async () => {
-  console.log("FETCH FOODDSS");
   const response = await request.foods.list();
-  return response.data;
+  return response;
 });
 
 export const fetchFoodDetails = createAsyncThunk(
@@ -12,7 +11,7 @@ export const fetchFoodDetails = createAsyncThunk(
   async (id) => {
     const response = await request.foods.details(id);
     console.log("response", response.data);
-    return response.data;
+    return response;
   }
 );
 

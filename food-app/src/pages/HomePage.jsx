@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllFoods } from "./slices/FoodSlice";
 import CircularProgress from "@mui/material/CircularProgress";
-import Button from "@mui/material/Button";
 
 export default function HomePage() {
   const dispatch = useDispatch();

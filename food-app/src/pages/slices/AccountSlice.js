@@ -9,6 +9,7 @@ export const login = createAsyncThunk("auth/login", async (body) => {
 });
 
 export const signIn = createAsyncThunk("auth", async (body) => {
+  console.log("signIn body : ", body);
   const response = await request.auth.signIn(body);
   return response;
 });
@@ -45,8 +46,7 @@ export const accountSlice = createSlice({
         state.loading = false;
         state.token = token;
         state.user = { username, roles };
-        console.log("token", state.token);
-        console.log("user", state.user);
+        localStorage.setItem("token", token);
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
@@ -63,6 +63,7 @@ export const accountSlice = createSlice({
         state.user = { username, roles };
         console.log("token", state.token);
         console.log("user", state.user);
+        localStorage.setItem("token", token);
       })
       .addCase(signIn.rejected, (state, action) => {
         state.loading = false;

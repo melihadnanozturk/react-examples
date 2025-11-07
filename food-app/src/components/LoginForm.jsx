@@ -39,8 +39,8 @@ export default function LoginForm() {
         login({ username: data.username, password: data.password })
       ).unwrap();
       navigate("/");
-    } catch {
-      console.log(data);
+    } catch (error) {
+      console.log("error", error);
     }
   };
 
@@ -86,21 +86,6 @@ export default function LoginForm() {
         <Button onClick={() => navigate("/auth")} variant="text">
           Hesabınız yok mu ?{" "}
         </Button>
-
-        {/* <Grid container spacing={2} size={12}>
-          <Grid item>
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Admin"
-            />
-          </Grid>
-          <Grid item>
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Tester"
-            />
-          </Grid>
-        </Grid> */}
       </Stack>
 
       {error && (
