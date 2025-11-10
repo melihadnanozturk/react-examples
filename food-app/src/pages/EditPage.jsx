@@ -7,8 +7,10 @@ import Button from "@mui/material/Button";
 import request from "../api/apiClient";
 import Typography from "@mui/material/Typography";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export default function FoodAdminPage() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -35,6 +37,7 @@ export default function FoodAdminPage() {
         image: data.imageUrl,
       });
       alert("Yemek basariyla kaydedildi :)");
+      navigate("/");
     } catch (err) {
       alert("Bir sorun olustu, console'u kontrol et");
       console.error("Error creating food item:", err);
@@ -112,7 +115,7 @@ export default function FoodAdminPage() {
                     })}
                     label="Resim Url"
                     error={!!errors.imageUrl}
-                    helperText={JSON.stringify(errors)}
+                    helperText={errors.imageUrl?.message}
                     sx={{ width: "100%" }}
                   />
                   {imageUrl ? (

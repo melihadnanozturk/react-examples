@@ -31,12 +31,13 @@ const foods = {
   list: () => methods.get("food"),
   details: (id) => methods.get(`food/${id}`),
   delete: (id) => methods.delete(`food/${id}`),
-  create: (body) => methods.post(`food`, body),
+  create: (body) => methods.post(`food/admin`, body),
 };
 
 const auth = {
   login: (body) => methods.post("api/auth/login", body),
   signIn: (body) => methods.post("api/auth/sign", body),
+  getMe: (body) => methods.post("api/auth/me", body),
 };
 
 const request = {

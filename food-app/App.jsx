@@ -5,7 +5,7 @@ import Layout from "./src/components/Layout.jsx";
 import FoodDetailPage from "./src/pages/FoodDetailPage.jsx";
 import LoginPage from "./src/pages/LoginPage.jsx";
 import SignInPage from "./src/pages/SignInPage.jsx";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setUser } from "./src/pages/slices/AccountSlice.js";
 
