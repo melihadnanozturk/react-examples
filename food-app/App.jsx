@@ -8,6 +8,7 @@ import SignInPage from "./src/pages/SignInPage.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setUser } from "./src/pages/slices/AccountSlice.js";
+import ControlPage from "./src/pages/ControlPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "/food/:foodId", element: <FoodDetailPage /> },
-      { path: "/admin", element: <FoodAdminPage /> },
+      { path: "/admin", element: <ControlPage /> },
       {
         path: "auth",
         children: [
