@@ -15,6 +15,14 @@ export const fetchFoodDetails = createAsyncThunk(
   }
 );
 
+export const postNewFood = createAsyncThunk(
+  "food/postNew",
+  async (foodData) => {
+    const response = await request.foods.create(foodData);
+    return response;
+  }
+);
+
 const initialState = {
   foods: null,
 };
@@ -38,6 +46,13 @@ export const foodSlice = createSlice({
         state.foods = action.payload;
       })
       .addCase(fetchAllFoods.rejected, (state, action) => {
+        state.loading = false;
+        state.error = "Beklenmeyen bir hata oluştu: " + action.error.message;
+      })
+      .addCase(postNewFood.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(postNewFood.rejected, (state, action) => {
         state.loading = false;
         state.error = "Beklenmeyen bir hata oluştu: " + action.error.message;
       })
