@@ -5,8 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Navigation() {
-  const pathname = usePathname();
-  console.log("Current pathname:", pathname);
+  const pathname = "/";
 
   return (
     <AppBar position="static" sx={{ backgroundColor: blue[500] }}>
@@ -28,6 +27,14 @@ export default function Navigation() {
             sx={{ mr: 2 }}
           >
             About
+          </Button>
+          <Button
+            component={Link}
+            href="/about/users"
+            color={pathname === "/about/users" ? "secondary" : "inherit"}
+            sx={{ mr: 2 }}
+          >
+            Users
           </Button>
         </Box>
       </Toolbar>
